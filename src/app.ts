@@ -88,7 +88,7 @@ class App {
 
   async listen() {
     this.server = await this.app.listen(this.app.get('port'));
-    console.log('Server on port  ', this.app.get('port'));
+    console.log('Server on port ', this.app.get('port'));
     return this.server;
   }
 }
