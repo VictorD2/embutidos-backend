@@ -80,7 +80,7 @@ class App {
   routes() {
     this.app.use('/api/v1/user/', UserRoutes);
     this.app.use('/api/v1/auth/', AuthRoutes);
-    this.app.use(IndexRoutes);
+    // this.app.use(IndexRoutes);
     this.app.use(logErrors);
     this.app.use(errorHandler);
     this.app.use(boomErrorHandler);
