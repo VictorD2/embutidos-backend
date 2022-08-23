@@ -60,7 +60,7 @@ class App {
   // Settings
   async settings() {
     dotenv.config();
-    this.app.set('port', process.env.PORT);
+    this.app.set('port', this.port || process.env.PORT || 4000);
     await ClsRol.createInitialRols();
     await ClsUser.creatingAdminUser();
   }
@@ -80,7 +80,7 @@ class App {
   routes() {
     this.app.use('/api/v1/user/', UserRoutes);
     this.app.use('/api/v1/auth/', AuthRoutes);
-    // this.app.use(IndexRoutes);
+    this.app.use(IndexRoutes);
     this.app.use(logErrors);
     this.app.use(errorHandler);
     this.app.use(boomErrorHandler);
