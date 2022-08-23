@@ -14,7 +14,7 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
       // Singing token with the user
       const token = signToken(user, `${process.env.JWT_SECRET}`);
 
-      return res.json({ success: 'Sesión Iniciada', user, token });
+      return res.json({ success: 'SesiÃ³n Iniciada', user, token });
     })(req, res, next);
   } catch (error: any) {
     next(boom.internal(error.message));
@@ -29,7 +29,7 @@ export const registerUser = async (req: Request, res: Response, next: NextFuncti
       // Singing token with the user
       const token = signToken(user, `${process.env.JWT_SECRET}`);
 
-      return res.json({ success: 'Sesión Iniciada', user, token });
+      return res.json({ success: 'SesiÃ³n Iniciada', user, token });
     })(req, res, next);
   } catch (error: any) {
     next(boom.internal(error.message));
@@ -58,7 +58,7 @@ export const changePasswordUser = async (req: Request, res: Response, next: Next
     req.body.id = req.user?.id;
     const { password } = req.body;
     await ClsAuth.changePassword(password, parseInt(`${req.body.id}`, 10));
-    return res.json({ success: `Contraseña cambiada` }).status(200);
+    return res.json({ success: `ContraseÃ±a cambiada` }).status(200);
   } catch (error: any) {
     return next(boom.internal(error.message));
   }

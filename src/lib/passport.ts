@@ -28,7 +28,7 @@ passport.use(
         return done(null, user);
       } catch (error) {
         console.log(error);
-        return done(boom.internal('OcurriÛ un error inesperado'), false);
+        return done(boom.internal('Ocurri√≥ un error inesperado'), false);
       }
     }
   )
@@ -51,7 +51,7 @@ passport.use(
         let message = '';
         if (error.original) {
           if (error.original.code === 'ER_DUP_ENTRY') {
-            message = `El correo ${email} ya est· registrado`;
+            message = `El correo ${email} ya est√° registrado`;
           }
         }
         return done(boom.badRequest(message === '' ? error.message : message), false);

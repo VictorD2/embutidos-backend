@@ -9,13 +9,13 @@ class ClsAuth {
     const user = await User.findOne({ where: { email: emailParam } });
 
     // exist?
-    if (user === null) return { message: 'El correo no est· registrado', validation: false };
+    if (user === null) return { message: 'El correo no est√° registrado', validation: false };
 
     // Enaled or disabled?
-    if (!user.status) return { message: 'Est·s deshabilitado', validation: false };
+    if (!user.status) return { message: 'Est√°s deshabilitado', validation: false };
 
     // Password match?
-    if (!(await matchPassword(password, user.password))) return { message: 'ContraseÒa incorrecta', validation: false };
+    if (!(await matchPassword(password, user.password))) return { message: 'Contrase√±a incorrecta', validation: false };
     return { message: 'Verificado', validation: true };
   }
 

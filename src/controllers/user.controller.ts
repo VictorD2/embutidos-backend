@@ -34,7 +34,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
     let message = '';
     if (error.original) {
       if (error.original.code === 'ER_DUP_ENTRY') {
-        message = `El correo ${req.body.email} ya est· registrado`;
+        message = `El correo ${req.body.email} ya est√° registrado`;
       }
     }
     return next(boom.badRequest(message === '' ? error.message : message));
