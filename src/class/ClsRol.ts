@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { write } from '@lib/helpers';
 import Rol, { RolInput } from '@models/rol.model';
 
 class ClsRol {
@@ -16,7 +18,9 @@ class ClsRol {
     try {
       await Rol.create(ClsRol.rols[0]);
       await Rol.create(ClsRol.rols[1]);
-    } catch (error) {}
+    } catch (error: any) {
+      write('', 'green');
+    }
   }
 }
 

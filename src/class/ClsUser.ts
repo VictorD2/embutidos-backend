@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IUser } from '@interfaces/IUser';
 import User, { UserInput } from '@models/user.model';
 import config from '@config/config';
 import Rol from '@models/rol.model';
+import { write } from '@lib/helpers';
 
 const adminUser: UserInput = {
   id: parseInt(`${config.adminId}`, 10),
@@ -17,7 +19,9 @@ class ClsUser {
   static async creatingAdminUser() {
     try {
       await User.create(adminUser);
-    } catch (error) {}
+    } catch (error: any) {
+      write('', 'green');
+    }
   }
 
   static async getUsers(): Promise<IUser[]> {
