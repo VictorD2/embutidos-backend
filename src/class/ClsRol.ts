@@ -13,8 +13,10 @@ class ClsRol {
   ];
 
   static async createInitialRols() {
-    await Rol.create(ClsRol.rols[0]);
-    await Rol.create(ClsRol.rols[1]);
+    try {
+      await Rol.create(ClsRol.rols[0]);
+      await Rol.create(ClsRol.rols[1]);
+    } catch (error) {}
   }
 }
 

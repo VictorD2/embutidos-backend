@@ -15,7 +15,9 @@ const adminUser: UserInput = {
 
 class ClsUser {
   static async creatingAdminUser() {
-    await User.create(adminUser);
+    try {
+      await User.create(adminUser);
+    } catch (error) {}
   }
 
   static async getUsers(): Promise<IUser[]> {
