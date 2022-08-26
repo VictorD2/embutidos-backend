@@ -8,8 +8,8 @@ import { write } from '@lib/helpers';
 const adminUser: UserInput = {
   id: parseInt(`${config.adminId}`, 10),
   name: `${config.adminName}`,
-  lastname: `${config.adminLastname}`,
   email: `${config.adminEmail}`,
+  ruc: `${config.adminRuc}`,
   password: `${config.adminPassword}`,
   rol_id: parseInt(`${config.adminRolId}`, 10),
   status: 1,

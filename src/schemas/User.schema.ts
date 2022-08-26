@@ -10,9 +10,16 @@ const name = Joi.string().required().messages({
   'any.required': "El campo 'name' es requerido.",
 });
 
-const lastname = Joi.string().required().messages({
-  'any.required': "El campo 'lastname' es requerido.",
-});
+const ruc = Joi.string().required().messages({
+  'any.required': "El campo 'ruc o dni' es requerido.",
+})
+const address = Joi.string().required().messages({
+  'any.required': "El campo 'ruc o dni' es requerido.",
+})
+const phone = Joi.string().optional().length(9).messages({
+  'any.required': "El campo 'ruc o dni' es requerido.",
+  "string.length":"El teléfono tiene que ser de 9 dígitos"
+})
 
 const email = Joi.string().required().email().messages({
   'any.required': "El campo 'email' es requerido.",
@@ -20,6 +27,10 @@ const email = Joi.string().required().email().messages({
 });
 
 const password = Joi.string().min(8).required().messages({
+  'any.required': "El campo 'password' es requerido.",
+  'string.min': 'La contraseña debe tener mínimo 8 caracteres.',
+});
+const repeatPassword = Joi.string().min(8).required().messages({
   'any.required': "El campo 'password' es requerido.",
   'string.min': 'La contraseña debe tener mínimo 8 caracteres.',
 });
@@ -36,14 +47,16 @@ export const loginUserSchema = Joi.object({
 
 export const registerUserSchema = Joi.object({
   name,
-  lastname,
   email,
   password,
+  repeatPassword,
+  address,
+  phone,
+  ruc
 }).options({ abortEarly: true });
 
 export const updateUserSchema = Joi.object({
   name,
-  lastname,
   email,
 }).options({ abortEarly: true });
 

@@ -45,6 +45,7 @@ passport.use(
     },
     async (req, email, password, done) => {
       try {
+        console.log(req.body)
         const newUser: IUser = await ClsAuth.createUser(req.body);
         return done(null, newUser);
       } catch (error: any) {

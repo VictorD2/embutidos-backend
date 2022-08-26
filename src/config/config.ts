@@ -11,7 +11,7 @@ const config = {
   adminId: process.env.ADMIN_ID,
   adminEmail: process.env.ADMIN_EMAIL,
   adminName: process.env.ADMIN_NAME,
-  adminLastname: process.env.ADMIN_LASTNAME,
+  adminRuc: process.env.ADMIN_RUC,
   adminPassword: process.env.ADMIN_PASSWORD,
   adminRolId: process.env.ROL_ADMIN_ID,
 };
