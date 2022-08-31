@@ -9,10 +9,12 @@ import '@lib/passport';
 import IndexRoutes from '@routes/index.routes';
 import UserRoutes from '@routes/user.routes';
 import AuthRoutes from '@routes/auth.routes';
+import ProductRoutes from '@routes/producto.routes';
 import { boomErrorHandler, errorHandler, logErrors } from '@lib/helpers';
 import ClsDBConexion from '@class/ClsBDConexion';
 import ClsRol from '@class/ClsRol';
 import ClsUser from '@class/ClsUser';
+import ClsProducto from '@class/ClsProducto';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -61,6 +63,7 @@ class App {
   async settings() {
     dotenv.config();
     this.app.set('port', this.port || process.env.PORT || 4000);
+    await ClsProducto.initialProducts();
     await ClsRol.createInitialRols();
     await ClsUser.creatingAdminUser();
   }
@@ -80,6 +83,7 @@ class App {
   routes() {
     this.app.use('/api/v1/user/', UserRoutes);
     this.app.use('/api/v1/auth/', AuthRoutes);
+    this.app.use('/api/v1/product/', ProductRoutes);
     this.app.use(IndexRoutes);
     this.app.use(logErrors);
     this.app.use(errorHandler);

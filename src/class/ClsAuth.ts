@@ -23,8 +23,7 @@ class ClsAuth {
     // Encrypting password
     const newUser = user;
     newUser.password = await encryptPassword(`${user.password}`);
-    const { email, name, ruc, password,address,phone } = newUser;
-    console.log(newUser)
+    const { email, name, ruc, password, address, phone } = newUser;
     const createdUser = await User.create(
       {
         email,

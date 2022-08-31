@@ -12,14 +12,14 @@ const name = Joi.string().required().messages({
 
 const ruc = Joi.string().required().messages({
   'any.required': "El campo 'ruc o dni' es requerido.",
-})
+});
 const address = Joi.string().required().messages({
   'any.required': "El campo 'ruc o dni' es requerido.",
-})
+});
 const phone = Joi.string().optional().length(9).messages({
   'any.required': "El campo 'ruc o dni' es requerido.",
-  "string.length":"El teléfono tiene que ser de 9 dígitos"
-})
+  'string.length': 'El teléfono tiene que ser de 9 dígitos',
+});
 
 const email = Joi.string().required().email().messages({
   'any.required': "El campo 'email' es requerido.",
@@ -52,7 +52,7 @@ export const registerUserSchema = Joi.object({
   repeatPassword,
   address,
   phone,
-  ruc
+  ruc,
 }).options({ abortEarly: true });
 
 export const updateUserSchema = Joi.object({
