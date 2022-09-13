@@ -36,7 +36,7 @@ export const deleteFile = async (pathname: string, filename: string) => {
 };
 
 // Validate Schemas
-export const validatorHandler = (schema: ObjectSchema, property: 'params' | 'body') => {
+export const validatorHandler = (schema: ObjectSchema, property: 'params' | 'body' | 'query') => {
   return (req: Request, res: Response, next: NextFunction) => {
     const data = req[property];
     const { error } = schema.validate(data, { abortEarly: false });

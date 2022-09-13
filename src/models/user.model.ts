@@ -47,10 +47,10 @@ const User = <ModeloUser>sequelize.define('user', {
   },
 });
 
-Rol.hasOne(User, {
-  foreignKey: 'rol_id',
-  sourceKey: 'id',
-});
+// Rol.hasOne(User, {
+//   foreignKey: 'rol_id',
+//   sourceKey: 'id',
+// });
 User.belongsTo(Rol, { foreignKey: 'rol_id', targetKey: 'id' });
 
 export type UserInput = Optional<IUser, 'id'>;

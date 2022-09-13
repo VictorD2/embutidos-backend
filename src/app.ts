@@ -9,12 +9,19 @@ import '@lib/passport';
 import IndexRoutes from '@routes/index.routes';
 import UserRoutes from '@routes/user.routes';
 import AuthRoutes from '@routes/auth.routes';
-import ProductRoutes from '@routes/producto.routes';
+import BrandRoutes from '@routes/Products/brand.routes';
+import StoreRoutes from '@routes/Products/store.routes';
+import UnitRoutes from '@routes/Products/unit.routes';
+import CategoryRoutes from '@routes/Products/category.routes';
+import ProductRoutes from '@routes/Products/producto.routes';
 import { boomErrorHandler, errorHandler, logErrors } from '@lib/helpers';
 import ClsDBConexion from '@class/ClsBDConexion';
 import ClsRol from '@class/ClsRol';
 import ClsUser from '@class/ClsUser';
-import ClsProducto from '@class/ClsProducto';
+import ClsBrand from '@class/Products/ClsBrand';
+import ClsCategory from '@class/Products/ClsCategory';
+import ClsUnit from '@class/Products/ClsUnit';
+import ClsStore from '@class/Products/ClsStore';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -63,8 +70,11 @@ class App {
   async settings() {
     dotenv.config();
     this.app.set('port', this.port || process.env.PORT || 4000);
-    await ClsProducto.initialProducts();
     await ClsRol.createInitialRols();
+    await ClsStore.initValues();
+    await ClsBrand.initValues();
+    await ClsUnit.initValues();
+    await ClsCategory.initValues();
     await ClsUser.creatingAdminUser();
   }
 
@@ -84,6 +94,10 @@ class App {
     this.app.use('/api/v1/user/', UserRoutes);
     this.app.use('/api/v1/auth/', AuthRoutes);
     this.app.use('/api/v1/product/', ProductRoutes);
+    this.app.use('/api/v1/brand/', BrandRoutes);
+    this.app.use('/api/v1/unit/', UnitRoutes);
+    this.app.use('/api/v1/category/', CategoryRoutes);
+    this.app.use('/api/v1/store/', StoreRoutes);
     this.app.use(IndexRoutes);
     this.app.use(logErrors);
     this.app.use(errorHandler);
